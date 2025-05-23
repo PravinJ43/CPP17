@@ -26,6 +26,12 @@ auto getString(int num){
     return num ? optional<string>{"Number String"} : nullopt;
 }
 
+auto slice(string_view str, optional<int>start, optional<int>end){
+    auto s = start.value_or(0);
+    auto e = start.value_or(start.size());
+    return str.substr(s, e-s);
+}
+
 int  main(){
     cout << "value of optional is " << getString(true).value_or("empty") <<endl;
     cout << "value of optional is " << getString(false).value_or("empty") <<endl;
